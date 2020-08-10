@@ -1,3 +1,4 @@
+// in a real app, I'd use a different mechanism to control this, but I'm laaaazy
 const ENV = "PROD";
 
 onload = async ()=>{

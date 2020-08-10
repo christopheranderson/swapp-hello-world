@@ -1,13 +1,25 @@
+// @ts-check
+
+const cosmos = require('@azure/cosmos');
+const uuid = require('uuid').v4;
+
+const client = new cosmos.CosmosClient(process.env.COSMOSDB);
+const logClient = client.database('helloWorld').container('log');
+
 const logs = [
     {name: "Chris", details: "a PM on Cosmos DB"}
 ];
 
 async function getLogs() {
-    return logs;
+    const {resources} =  await logClient.items.readAll().fetchAll();
+    return resources;
 }
 
-function appendLog(log) {
-    logs.push(log);
+async function appendLog(log) {
+    await logClient.items.create({
+        id: uuid(),
+        ...log
+    });
 }
 
 function validateInput(input) {
