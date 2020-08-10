@@ -32,6 +32,12 @@ input:focus{
     grid-area: iam;
 }
 
+.iam input {
+    text-align: center;
+    font-size: 1.5em;
+    min-width: 50px;
+}
+
 .log {
     grid-area: log;
 }
@@ -39,4 +45,8 @@ input:focus{
 .inline-input {
     border: none;
     border-bottom: 1px solid black;
+}
+
+.hidden {
+    display: none;
 }
