@@ -94,13 +94,23 @@ onload = async ()=>{
 
         const response = await fetch("/api/log");
 
+        if(!response.ok ){
+            throw new Error("Unsuccessful response from the server");
+        }
+
         // TODO: got to be a better way detect the casing 
-        if(!response.ok || !(response.headers['Content-Type'] || response.headers['content-type']) || !(response.headers['Content-Type'].contains('json') || response.headers['content-type'].contains('json'))) {
+        if(!(response.headers.get('Content-Type').includes('json') || response.headers.get('content-type').includes('json'))) {
             console.error('Invalid response:\n' + await response.text());
             throw new Error("Could not fetch log");
         }
 
         return response.json();
+    }
+
+    function isJSON(response) {
+        for(const header of headers) {
+            
+        }
     }
 
     function unhideLogs() {
