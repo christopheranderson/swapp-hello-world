@@ -94,7 +94,8 @@ onload = async ()=>{
 
         const response = await fetch("/api/log");
 
-        if(!response.ok || !response.headers['Content-Type'] || !response.headers['Content-Type'].contains('json')) {
+        // TODO: got to be a better way detect the casing 
+        if(!response.ok || !(response.headers['Content-Type'] || response.headers['content-type']) || !(response.headers['Content-Type'].contains('json') || response.headers['content-type'].contains('json'))) {
             console.error('Invalid response:\n' + await response.text());
             throw new Error("Could not fetch log");
         }
