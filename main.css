@@ -1,0 +1,42 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Baloo Tamma 2', cursive;
+}
+
+input:focus{
+    outline: none;
+}
+
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 25% auto 25%;
+    grid-template-rows: 25% 100px auto auto;
+    grid-template-areas: 
+      ". . ."
+      ". banner ."
+      ". iam ."
+      ". log .";
+  }
+
+.banner {
+    grid-area: banner;
+}
+
+.iam {
+    grid-area: iam;
+}
+
+.log {
+    grid-area: log;
+}
+
+.inline-input {
+    border: none;
+    border-bottom: 1px solid black;
+}
